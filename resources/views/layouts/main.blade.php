@@ -133,10 +133,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
-                    <div class="row">
-                        @yield('content')
-                    </div>
+                    @yield('content')
                 </div>
                 <!-- /.container-fluid -->
 
