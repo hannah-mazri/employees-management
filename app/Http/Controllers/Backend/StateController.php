@@ -15,9 +15,13 @@ class StateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $states = State::all();
+        if ($request->has('search')) {
+            $states = State::where('name', 'like', "%{$request->search}%")->get();
+        }
+
         return view('states.index', compact('states'));
     }
 
