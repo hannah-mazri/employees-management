@@ -3,7 +3,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Countries</h1>
+    <h1 class="h3 mb-0 text-gray-800">Departments</h1>
 </div>
 
 <div class="container">
@@ -11,35 +11,20 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{ __('Update Country') }}
-                    <a href="{{ route('countries.index') }}" class="float-right">Back</a>
+                    {{ __('Update Department') }}
+                    <a href="{{ route('departments.index') }}" class="float-right">Back</a>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('countries.update', $country->id) }}">
+                    <form method="POST" action="{{ route('departments.update', $department->id) }}">
                         @csrf
                         @method('PUT')
-                        <div class="form-group row">
-                            <label for="country_code" class="col-md-4 col-form-label text-md-right">{{ __('Code') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="country_code" type="text" class="form-control @error('country_code') is-invalid @enderror" name="country_code"
-                                value="{{ old('country_code', $country->country_code) }}" required>
-
-                                @error('country_code')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                                value="{{ old('name', $country->name) }}" required autocomplete="name" autofocus>
+                                value="{{ old('name', $department->name) }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -60,10 +45,10 @@
                 </div>
             </div>
             <div class="m-2 p-2">
-                <form action="{{ route('countries.destroy', $country->id) }}" method="POST">
+                <form action="{{ route('departments.destroy', $department->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger">Delete {{ $country->name }}</button>
+                    <button class="btn btn-danger">Delete {{ $department->name }}</button>
                 </form>
             </div>
         </div>
