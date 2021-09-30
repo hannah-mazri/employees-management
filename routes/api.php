@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Backend\EmployeeController;
-use App\Http\Controllers\Backend\EmployeeDataController;
+use App\Http\Controllers\Api\EmployeeController;
+use App\Http\Controllers\Api\EmployeeDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
