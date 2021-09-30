@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->foreignId('city_id')->constrained();
             $table->char('zip_code');
             $table->date('birthdate')->nullable();
-            $table->date('date_hired')->nullabel();
+            $table->date('date_hired')->nullable();
             $table->timestamps();
         });
     }
