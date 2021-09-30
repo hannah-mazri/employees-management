@@ -403,7 +403,7 @@ export default {
                     date_hired: this.formatDate(this.form.date_hired)
                 })
                 .then(res => {
-                    console.log(res);
+                    this.$router.push({ name: "EmployeesIndex" });
                 });
         },
         formatDate(value) {
