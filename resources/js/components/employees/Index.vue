@@ -18,10 +18,9 @@
                                     <div class="col">
                                         <input
                                             type="search"
-                                            name="search"
+                                            v-model.lazy="search"
                                             class="form-control mb-2"
-                                            id="inlineFormInput"
-                                            placeholder="Search city by name"
+                                            placeholder="Search Employee by First Name or Last Name"
                                         />
                                     </div>
                                     <div class="col">
@@ -31,6 +30,21 @@
                                         >
                                             Search
                                         </button>
+                                    </div>
+                                    <div class="col">
+                                        <select
+                                            v-model="selectedDepartment"
+                                            name="department"
+                                            class="form-control"
+                                            aria-label="Department select dropdown"
+                                        >
+                                            <option
+                                                v-for="department in departments"
+                                                :key="department.id"
+                                                :value="department.id"
+                                                >{{ department.name }}</option
+                                            >
+                                        </select>
                                     </div>
                                 </div>
                             </form>
@@ -97,18 +111,45 @@ export default {
         return {
             employees: [],
             showMessage: false,
-            message: ""
+            message: "",
+            search: null,
+            selectedDepartment: null,
+            departments: []
         };
+    },
+    watch: {
+        search() {
+            this.getEmployees();
+        },
+        selectedDepartment() {
+            this.getEmployees();
+        }
     },
     created() {
         this.getEmployees();
+        this.getDepartments();
     },
     methods: {
         getEmployees() {
             axios
-                .get("api/employees")
+                .get("api/employees", {
+                    params: {
+                        search: this.search,
+                        department_id: this.selectedDepartment
+                    }
+                })
                 .then(res => {
                     this.employees = res.data.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        getDepartments() {
+            axios
+                .get("/api/employees/departments")
+                .then(res => {
+                    this.departments = res.data;
                 })
                 .catch(error => {
                     console.error(error);
