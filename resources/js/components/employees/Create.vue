@@ -354,7 +354,7 @@ export default {
                     this.countries = res.data;
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.error(error);
                 });
         },
         getStates() {
@@ -364,7 +364,7 @@ export default {
                     this.states = res.data;
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.error(error);
                 });
         },
         getCities() {
@@ -374,7 +374,7 @@ export default {
                     this.cities = res.data;
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.error(error);
                 });
         },
         getDepartments() {
@@ -384,7 +384,7 @@ export default {
                     this.departments = res.data;
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.error(error);
                 });
         },
         storeEmployee() {
