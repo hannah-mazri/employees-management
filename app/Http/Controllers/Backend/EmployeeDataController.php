@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\Backend;
+
+use App\Http\Controllers\Controller;
+use App\Models\Country;
+use App\Models\State;
+use App\Models\City;
+use App\Models\Department;
+use Illuminate\Http\Request;
+
+class EmployeeDataController extends Controller
+{
+    public function countries()
+    {
+        $countries = Country::all();
+
+        return response()->json($countries);
+    }
+}
